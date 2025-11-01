@@ -1,0 +1,29 @@
+from sys import maxsize
+from itertools import permutations
+V = 4
+def travellingSalesmanProblem(graph, s):
+    vertex = []  # Changed variable name to lowercase 'vertex'
+    for i in range(V):  # Fixed capitalization of 'for'
+        if i != s:  # Changed capitalization of 'if'
+            vertex.append(i)
+
+    min_path = maxsize  # Changed variable name to lowercase 'min_path'
+    next_permutation = permutations(vertex)  # Changed variable name to lowercase 'next_permutation'
+    for i in next_permutation:  # Fixed capitalization of 'for'
+        current_pathweight = 0  # Changed variable name to lowercase 'current_pathweight'
+        k = s  # Changed variable name to lowercase 'k'
+        for j in i:  # Fixed capitalization of 'for'
+            current_pathweight += graph[k][j]
+            k = j
+        current_pathweight += graph[k][s]
+        min_path = min(min_path, current_pathweight)
+
+    return min_path  # Changed capitalization of 'return'
+if __name__ == "__main__":
+    graph = [[0, 10, 15, 20], [10, 0, 35, 25],
+             [15, 35, 0, 30], [20, 25, 30, 0]]
+    s = 0
+    print(travellingSalesmanProblem(graph, s))  # Changed capitalization of 'print'
+
+Output: 
+     80
